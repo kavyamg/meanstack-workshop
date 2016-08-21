@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="contact">
+  <head>
+    <meta charset="utf-8">
+    <title>Contact</title>
+    <link   rel="stylesheet"  href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </head>
+  <body>
+
+    <div class="container" ng-controller="contactCtrl">
+      <h1>Contacts application</h1>
+
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>email</th>
+          <th>phone number</th>
+          <th>action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+          <td><input type="text" class="form-control" ng-model="contact.name" ></td>
+          <td><input type="text" class="form-control" ng-model="contact.email" ></td>
+          <td><input type="text" class="form-control" ng-model="contact.number"></td>
+          <td><button class="btn btn-primary" ng-click="add()">Add</button> </td>
+        </tr>
+
+        <tr ng-repeat="contact in contacts">
+          <td>{{contact.name}}</td>
+          <td>{{contact.email}}</td>
+          <td>{{contact.number}}</td>
+          <td><button class="btn btn-danger" ng-click="remove(contact._id)">Remove</button> <button class="btn btn-info" data-toggle="modal" data-target="#update" ng-click="">update</button></td>
+        </tr>
+
+        </tbody>
+      </table>
+
+      <div class="modal fade" id="update" role="dailog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Update</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-4"><input type="text"  class="form-control" ng-model="modal.name"></div>
+                <div class="col-md-4"><input type="text"  class="form-control" ng-model="modal.email"></div>
+                <div class="col-md-4"><input type="text"  class="form-control" ng-model="modal.number" ></div>
+              </div>
+
+
+
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary"  data-dismiss="modal">Update</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
